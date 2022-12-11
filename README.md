@@ -1,4 +1,4 @@
-# JSA07NH
-git add . : thêm tất cả các file có sự thay đổi để push lên github
-git commit -m "nội dung commit" : comment cho các thay đổi của các file tại lần push này
-git push -u origin tên nhánh : push lên github
+# JSA07-final
+Với project đã có sắn 
+- git add . : để thêm tất cả các file có sự thay đổi vào git
+- git add + fileName : chỉ thêm file có sự thay đổi vào git
