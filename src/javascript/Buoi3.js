@@ -10,6 +10,9 @@
 // bài 2 : spread,rest : thao tác copy các mảng
 
 const arr1 = [1,2,3,4,5];
+
+// item : 1,2,3,4,5
+// index : 0,1,2,3,4
 const arr2 = ['a', 'b', 'c', 'd', 'e'];
 
 // nối 2 mảng = cách 1 :
@@ -19,7 +22,7 @@ console.log(arrConcat)
 // cách từ buổi 2 : spread operator
 
 const arrSpread = [...arr1, ...arr2]
-console.log(arrSpread)
+console.log(arrSpread)  // [1,2,3,4,5,'a','b','c','d','e']
 
 console.log(arrConcat === arrSpread)  // không giống nhau => false
 

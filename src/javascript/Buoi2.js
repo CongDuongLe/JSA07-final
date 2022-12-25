@@ -136,12 +136,14 @@ console.log(arr1Clone)
 const a = [1,2,3]
 const b = [4,5,6]
 const random = ['a', 'b', 'c']
+const e = [1,'c','z', 10]
 
 const c = a.concat(b, random)
 console.log(c)
 // c2 : dùng spread operator
-const d = [...a, ...b,...random]
-console.log(d)
+const d = [...a, ...b,...random, ...e]
+console.log(d) 
+// [1,2,3,4,5,6,'a','b','c',1,'c','z',10]
 
 // th 3 : rải params cho rest parameter
 
@@ -224,3 +226,26 @@ const mang = [1,2,3,4,5,6,7,8,9,10]
     
     
 // }
+
+
+
+
+// JSB : khai báo 
+
+
+// function Venus(a,b) {
+//     return a*b // phép nhân
+// }
+
+// const zzz = Venus(2,3)
+
+// console.log(zzz)
+
+// JSA : arrow function : mũi tên + hàm : hàm mũi tên
+
+const Venus = (a,b) => {
+    return a*b
+}
+
+const zyz = Venus(2,5)
+console.log(zyz)
