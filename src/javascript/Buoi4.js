@@ -187,6 +187,11 @@ const findIndexOfAlbum = (id) => {
 }
 
 
+const addTocart = (params) => {
+    console.log(params)
+}
+
+
 
 
 
@@ -204,6 +209,8 @@ const renderList = () => {
                     }
                 </h3>
                 <button onclick='findIndexOfAlbum(${item.id})'> thay đổi trạng thái </button>
+            
+
 
             </div>
         `
@@ -212,9 +219,18 @@ const renderList = () => {
 
 
 
+
+
+
+
+
    // các bước : tìm ra index của item muốn thay đổi trạng thái
 
     listMusicQuery.innerHTML = html.join('')
+
+    // appendChild vào listMusicQuery
+
+    // listMusicQuery.appendChild(html)
 
 
    // in lại list album sau khi thay đổi trạng thái cho index
