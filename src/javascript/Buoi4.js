@@ -199,22 +199,69 @@ const addTocart = (params) => {
 const renderList = () => {
     let html = document.createElement('div')
 
-    html = album.map((item, index) => { 
-        return `
-            <div key=${index}> 
+    album.map((item, index) => {
+        html.innerHTML += `
+            <div key=${index}>
                 <h1>${item.name}</h1>
-                <h3> 
+                <h3>
                     ${
                         item.haveListened ? 'Đã nghe' : 'Chưa nghe'
                     }
                 </h3>
                 <button onclick='findIndexOfAlbum(${item.id})'> thay đổi trạng thái </button>
+            </div>
+        `
+    })
+
+    listMusicQuery.innerHTML = html.innerHTML
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     html = album.map((item, index) => { 
+//         return `
+//             <div key=${index}> 
+//                 <h1>${item.name}</h1>
+//                 <h3> 
+//                     ${
+//                         item.haveListened ? 'Đã nghe' : 'Chưa nghe'
+//                     }
+//                 </h3>
+//                 <button onclick='findIndexOfAlbum(${item.id})'> thay đổi trạng thái </button>
             
 
 
-            </div>
-        `
-   })
+//             </div>
+//         `
+//    })
 
 
 
@@ -226,7 +273,10 @@ const renderList = () => {
 
    // các bước : tìm ra index của item muốn thay đổi trạng thái
 
-    listMusicQuery.innerHTML = html.join('')
+    // listMusicQuery.innerHTML = html.join('')
+
+   // tạo 1 div mới
+
 
     // appendChild vào listMusicQuery
 
@@ -340,9 +390,80 @@ console.log(total)
 
 
 
+// const getdata = async () => {
+//     const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+//     const data = res.data
+//     const product = []
+
+// }
 
 
 
+
+
+let config = {
+    offset : 0,
+    limit : 5
+}
+
+
+
+
+const testQuery = document.querySelector('#test')
+const getData = async () => {
+    let product = []
+    const apiUrl = `https://api.escuelajs.co/api/v1/products?offset=${config.offset}&limit=${config.limit}`
+    const response = await axios.get(apiUrl)
+    const data = response.data
+
+    product = [...product, ...data]  
+    // lấy lại hết các giá trị của mảng product và thêm data mới sau khi load more vào 
+    // mảng product
+   
+    const html = document.createElement('div')
+
+    // lấy mảng product cuối cùng sau khi load more và render ra html
+    product.map(
+        (item, index) => {
+            html.innerHTML += `
+            <div class="col-4 py-2 mx-auto" key=${index}>
+                <div class="card">
+                    <img src="${item.images[0]}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title>
+                            ${item.name}
+                        </h5>
+                        <p class="card-text">
+                            ${item.description}
+                        </p>
+                        <a href="#" class="btn btn-primary">
+                            Go somewhere
+                        </a>
+                    </div>
+                </div>
+            </div>
+            `
+            testQuery.appendChild(html)
+
+        }
+    )
+}
+
+
+getData()
+
+console.log(config, 'chưa load more')
+
+const handleLoadMore = () => {
+    console.log('click')
+    config = {
+        ...config, // lấy lại tất các giá trị cu của config
+        offset : config.offset += 1  // offset : tăng offset thêm 1 sau mỗi lần click
+    }
+    getData()
+
+    console.log(config, 'đã load more')
+}
 
 
 
