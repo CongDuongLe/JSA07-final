@@ -60,50 +60,50 @@
 // lưu ý : với fetch : khi data trả về mình cần phải convert sang dạng JSON để có thể tương tác với data
 // hàm convert : paramName.json()
 
-const API_URL = `https://jsonplaceholder.typicode.com/users`
-const handleAlert = (params) => {
-  console.log(params)
-  return alert('id', params)
-}
+// const API_URL = `https://jsonplaceholder.typicode.com/users`
+// const handleAlert = (params) => {
+//   console.log(params)
+//   return alert('id', params)
+// }
 
 const containerQuery = document.querySelector('#container')
 // muốn render html từ js bắt buộc dùng dấu `  ` và dùng ${} để gọi biến
 
-const renderItem = (items) => {
-  console.log(items, 'items nè')
-  const html = items.map((item, index) => {
-    return `
-        <div 
-         key=${index} class="max-w-sm w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Email : ${item.email}</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Name : ${item.name}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">UserName : ${item.username}</p>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Website : ${item.website}</p>
-        <div
-            onclick="handleAlert(${item.id})"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Call ${item.phone}
-            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </div>
-        </div>
-        `
-  })
-  containerQuery.innerHTML = html.join('')
-}
+// const renderItem = (items) => {
+//   console.log(items, 'items nè')
+//   const html = items.map((item, index) => {
+//     return `
+//         <div 
+//          key=${index} class="max-w-sm w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+//         <a href="#">
+//             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> Email : ${item.email}</h5>
+//         </a>
+//         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Name : ${item.name}</p>
+//         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">UserName : ${item.username}</p>
+//         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Website : ${item.website}</p>
+//         <div
+//             onclick="handleAlert(${item.id})"
+//             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+//             Call ${item.phone}
+//             <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+//         </div>
+//         </div>
+//         `
+//   })
+//   containerQuery.innerHTML = html.join('')
+// }
 
 // hàm renderItem : có mục đích là nhận data được truyền vào từ hàm then thứ 2 của hàm handlegetUser và dùng data đó để render ra html trong
 // bằng hàm map, sau đó gán vào containerQuery để hiển thị ra màn hình
 // chú ý : data là 1 các obj, mảng này có chiều dài bằng bao nhiêu thì sẽ có bấy nhiêu items được sinh ra trong hàm renderItem
 
-const handleGetUsers = () => {
-  fetch(API_URL) // hàm fetch với link API là tham số, hàm này trả về 1 promise
-    .then((response) => response.json()) // then : hàm này sẽ chạy khi promise trả về kết quả thành công ( hàm callback trả về promise)
-    .then((data) => renderItem(data)) // then : mang data đã convert từ dòng hàm then bên trên xuống và truyền vào hàm renderItem
-    .catch((error) => console.log(error)) // catch : bắt lỗi khi quá trình gọi API thất bại
-    .finally(() => console.log('Call API Done')) // finally : hàm này luôn chạy mặc cho quá trình gọi API thành công hay thât bai (không nhất thiết phải có)
-}
+// const handleGetUsers = () => {
+//   fetch(API_URL) // hàm fetch với link API là tham số, hàm này trả về 1 promise
+//     .then((response) => response.json()) // then : hàm này sẽ chạy khi promise trả về kết quả thành công ( hàm callback trả về promise)
+//     .then((data) => renderItem(data)) // then : mang data đã convert từ dòng hàm then bên trên xuống và truyền vào hàm renderItem
+//     .catch((error) => console.log(error)) // catch : bắt lỗi khi quá trình gọi API thất bại
+//     .finally(() => console.log('Call API Done')) // finally : hàm này luôn chạy mặc cho quá trình gọi API thành công hay thât bai (không nhất thiết phải có)
+// }
 
 // handleGetUsers()
 
@@ -165,39 +165,74 @@ const handleGetUsers = () => {
 
 // handleGetQuote()
 
-const PRODUCT_API = 'https://fakestoreapi.com/products?limit=10'
+// const PRODUCT_API = 'https://fakestoreapi.com/products?limit=10'
 
-const renderProduct = (params) => {
-  // nhận lại data thông qua biến params
+// const renderProduct = (params) => {
+//   // nhận lại data thông qua biến params
+//   console.log(params)
+//   const html = params.map((item, index) => {
+//     return `
+//             <div 
+//              key=${index} class="max-w-sm w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+//             <a href="#">
+//                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> category : ${item.category}</h5>
+//             </a>
+//             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">description : ${item.description}</p>
+//             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">title : ${item.title}</p>
+//             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">price : ${item.price} $</p>
+//             <img class="h-auto max-w-lg rounded-lg" src=${item.image} alt="image description">
+//             <div
+//                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+//                 rating ${item.rating.rate}
+//                 <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+//             </div>
+//             </div>
+//             `
+//   })
+//   containerQuery.innerHTML = html.join('')
+// }
+
+// const handleGetProduct = async () => {
+//   const res = await axios.get(PRODUCT_API)
+//   const data = res.data
+//   renderProduct(data) // truyền data nhận đc từ API cho hàm renderProduct
+
+//   console.log(data, 'data nèeeeeee')
+// }
+
+// handleGetProduct()
+
+
+const mapPokemon  = (params) => {
   console.log(params)
   const html = params.map((item, index) => {
-    return `
-            <div 
-             key=${index} class="max-w-sm w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> category : ${item.category}</h5>
-            </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">description : ${item.description}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">title : ${item.title}</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">price : ${item.price} $</p>
-            <img class="h-auto max-w-lg rounded-lg" src=${item.image} alt="image description">
-            <div
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                rating ${item.rating.rate}
-                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </div>
-            </div>
-            `
-  })
-  containerQuery.innerHTML = html.join('')
+        return `
+                <div
+                  
+                 key=${index} class="max-w-sm w-[400px] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> pokename : ${item.name}</h5>
+                </a>
+                </div>
+                `
+      })
+      containerQuery.innerHTML = html.join('')
 }
 
-const handleGetProduct = async () => {
-  const res = await axios.get(PRODUCT_API)
-  const data = res.data
-  renderProduct(data) // truyền data nhận đc từ API cho hàm renderProduct
 
-  console.log(data, 'data nèeeeeee')
+
+
+const POKEMON_API_URL = "https://pokeapi.co/api/v2/ability/?limit=20&offset=20"
+
+
+const getPokemon = async () => {
+  const res = await axios.get(POKEMON_API_URL)
+  // console.log(res)
+  const pokeData = res.data
+  // console.log(pokeData)
+  const result = pokeData.results
+  mapPokemon(result)  // truyền result vào hàm mapPokemon
+  // console.log(result)
 }
 
-handleGetProduct()
+getPokemon()
